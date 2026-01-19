@@ -1,4 +1,6 @@
-streamlit
+--only-binary=:all:
+
+streamlit==1.29.0
 bokeh
 streamlit_bokeh
 bokeh_sampledata

@@ -61,8 +61,8 @@ col1, col2= st.columns([0.8, 0.2])
 
 # MAP
 with col1:
-    #st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
-    streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
+    st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
+    #streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
     #with open("map.html", "r", encoding="utf-8") as html_file:
     #                html_content = html_file.read()
     #st.components.v1.html(html_content, width=1572//2, height=966//2, scrolling=True)
