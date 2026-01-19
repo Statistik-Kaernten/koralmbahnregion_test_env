@@ -1,7 +1,8 @@
 --only-binary=:all:
 
-bokeh>=3.2,<3.4
+bokeh>=3.3,<3.4
 streamlit-bokeh>=3.8.0
 geopandas==0.13.2
-numpy==1.26.4
-pandas==2.1.4
+
+numpy>=2.1,<2.4
+pandas>=2.2,<2.3
