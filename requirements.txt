@@ -1,7 +1,6 @@
 --only-binary=:all:
 
 streamlit==1.29.0
-bokeh
-streamlit_bokeh
-bokeh_sampledata
-geopandas
+bokeh==2.4.3
+streamlit-bokeh==3.0.4
+geopandas==0.13.2
