@@ -1,0 +1,5 @@
+streamlit
+bokeh
+streamlit_bokeh
+bokeh_sampledata
+geopandas
