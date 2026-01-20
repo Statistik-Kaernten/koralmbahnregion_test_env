@@ -1,7 +1,7 @@
 ### ÜBERBLICK SEITE des Koralmbahn-Dashboards
 from misc.gkzList import *
 from data import *
-from deckmap import createDeck
+#from deckmap import createDeck
 
 # PAGE CONSTANTS
 START_JAHR: int = 2002
@@ -27,15 +27,15 @@ st.title("Koralmbahnregion-Dashboard Überblick")
 ## SIDEBAR
 with st.sidebar:
 
-    #st.image("gfx/stat_ktn_logo.png", width=190)
+    st.image("gfx/stat_ktn_logo.png", width=190)
     st.text('')
-    #st.image("gfx/stat_stmk_logo.png", width=150)
+    st.image("gfx/stat_stmk_logo.png", width=150)
     st.text('')
 
     with st.expander(f''':orange[**Info**]''', expanded=False):
         st.write(f'''
                  Koralmbahnregion-Dashboard  
-                 aktualisiert am 23.10.2025,  
+                 aktualisiert am 20.01.2026,  
                  erstellt von Martin Writz, BSc.,  
                  Landesstelle für Statistik,   
                  Amt der Kärntner Landesregierung  
@@ -56,35 +56,14 @@ with st.sidebar:
                  ''')
 
 ## CONTENT    
-col1, col2= st.columns([0.8, 0.2])
+col1, col2, col3 = st.columns([1, 2, 1])
 
 # MAP
-with col1:
+with col2:
     #st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
-    st.pydeck_chart(createDeck(), width='stretch')
-    st.markdown(
-        """
-        <style>
-        /* Disable ALL mouse interaction with the pydeck canvas */
-        .deckgl-canvas {
-            pointer-events: none !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
 
-    st.markdown(
-        """
-        <style>
-        .mapboxgl-ctrl-zoom,
-        .mapboxgl-ctrl-group {
-            display: none !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.image("gfx/koralmregion.png", width=600)
+
     #streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
     #with open("map.html", "r", encoding="utf-8") as html_file:
     #                html_content = html_file.read()
@@ -92,8 +71,9 @@ with col1:
 # OG: st.components.v1.html(html_content, width=1572//2, height=966//2, scrolling=False)
  
 # ABOUT
-with col2:
-    with st.expander(f''':orange[**Koralmbahnregion**]''', expanded=True):
+col4, col5, col6 = st.columns([0.1, 0.1, 0.8])
+with col3:
+    with st.expander(f''':orange[**Koralmbahnregion**]''', expanded=False):
         st.write(f'''
                  Die Koralmbahnregion,  
                  Definition nach Joanneum Research.  
