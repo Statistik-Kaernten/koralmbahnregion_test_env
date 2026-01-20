@@ -1,7 +1,7 @@
 ### ÜBERBLICK SEITE des Koralmbahn-Dashboards
 from misc.gkzList import *
 from data import *
-#from deckmap import createDeck
+from svg_map import create_svg_map
 
 # PAGE CONSTANTS
 START_JAHR: int = 2002
@@ -27,11 +27,23 @@ st.title("Koralmbahnregion-Dashboard Überblick")
 ## SIDEBAR
 with st.sidebar:
 
-    #st.image("gfx/stat_ktn_logo.png", width=190)
+    st.image("gfx/stat_ktn_logo.png", width=190)
     st.text('')
-    #st.image("gfx/stat_stmk_logo.png", width=150)
+    st.image("gfx/stat_stmk_logo.png", width=150)
     st.text('')
-
+    with st.expander(f''':orange[**Koralmbahnregion**]''', expanded=False):
+        st.write(f'''
+                 Die Koralmbahnregion,  
+                 Definition nach Joanneum Research.  
+                 [Website](https://www.joanneum.at/policies/die-koralmbahn-und-ihre-regionaloekonomische-wirkung-ein-neuer-international-sichtbarer-ballungsraum-entsteht/)  
+                   
+                 Das Koralmbahnprojekt verfolgt das Ziel,  
+                 dass Kärnten und die Steiermark zusammenwachsen.  
+                 Dieses Dashboard bietet eine Datensammlung gegliedert  
+                 in den vier Bereichen Bevölkerung, Wirtschaft, Verkehr  
+                 und Bildung für die definierte Koralmbahnregion um die  
+                 Entwicklungen darstellen zu können.
+                 ''')
     with st.expander(f''':orange[**Info**]''', expanded=False):
         st.write(f'''
                  Koralmbahnregion-Dashboard  
@@ -56,13 +68,13 @@ with st.sidebar:
                  ''')
 
 ## CONTENT    
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([1, 8, 1])
 
 # MAP
 with col2:
     #st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
-
-    st.image("gfx/koralmbahnregion.png", width=600)
+    create_svg_map()
+    #st.image("gfx/koralmbahnregion.png", width=600)
 
     #streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
     #with open("map.html", "r", encoding="utf-8") as html_file:
@@ -71,23 +83,9 @@ with col2:
 # OG: st.components.v1.html(html_content, width=1572//2, height=966//2, scrolling=False)
  
 # ABOUT
-col4, col5, col6 = st.columns([0.1, 0.1, 0.8])
-with col3:
-    with st.expander(f''':orange[**Koralmbahnregion**]''', expanded=False):
-        st.write(f'''
-                 Die Koralmbahnregion,  
-                 Definition nach Joanneum Research.  
-                 [Website](https://www.joanneum.at/policies/die-koralmbahn-und-ihre-regionaloekonomische-wirkung-ein-neuer-international-sichtbarer-ballungsraum-entsteht/)  
-                   
-                 Das Koralmbahnprojekt verfolgt das Ziel,  
-                 dass Kärnten und die Steiermark zusammenwachsen.  
-                 Dieses Dashboard bietet eine Datensammlung gegliedert  
-                 in den vier Bereichen Bevölkerung, Wirtschaft, Verkehr  
-                 und Bildung für die definierte Koralmbahnregion um die  
-                 Entwicklungen darstellen zu können.
-                 ''')
+
 
 # pre-load data
-data_lst = ['bevoelkerung', 'wanderungen', "wohnungen", "erwerbstaetige", "arbeitsstaetten", "tourismus", "schueler", "hoest_ausbildung", "verkehrszaehlung"]
-for elem in data_lst:
-    df = get_data(f'{elem}.csv')
+#data_lst = ['bevoelkerung', 'wanderungen', "wohnungen", "erwerbstaetige", "arbeitsstaetten", "tourismus", "schueler", "hoest_ausbildung", "verkehrszaehlung"]
+#for elem in data_lst:
+#    df = get_data(f'{elem}.csv')
