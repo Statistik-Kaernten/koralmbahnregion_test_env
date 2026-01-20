@@ -3,12 +3,44 @@ from bokeh.layouts import column
 import geopandas as gpd
 from bokeh.models import (ColumnDataSource, HoverTool)
 from misc.gkzList import *
+import json
+import pandas as pd
+from shapely.geometry import shape, Polygon, MultiPolygon
+from bokeh.models import ColumnDataSource
+
+
+def load_geojson_polygons(path):
+    with open(path, encoding="utf-8") as f:
+        geojson = json.load(f)
+
+    rows = []
+
+    for feature in geojson["features"]:
+        geom = shape(feature["geometry"])
+        props = feature.get("properties", {})
+
+        # explode MultiPolygon manually
+        if isinstance(geom, MultiPolygon):
+            polygons = geom.geoms
+        elif isinstance(geom, Polygon):
+            polygons = [geom]
+        else:
+            continue
+
+        for poly in polygons:
+            rows.append({
+                "geometry": poly,
+                "Gemeindename": props.get("Gemeindename"),
+                "Gemeindenummer": props.get("Gemeindenummer"),
+            })
+
+    return pd.DataFrame(rows)
 
 def createMap():
     gkz_List = gkzList['gkz']
     #gkz_List.extend([''] * 233)
-    gdf = gpd.read_file('data/koralm2025.json') # read geojson file
-    gdf = gdf.explode(ignore_index=True) # make multipolygon to separate polygons
+    gdf = load_geojson_polygons('data/koralm2025.json') # read geojson file
+    #gdf = gdf.explode(ignore_index=True) # make multipolygon to separate polygons
     gdf = gdf.drop(index=179) # delete exclave hitzendorf
         
     # extract coordinates from gdf
