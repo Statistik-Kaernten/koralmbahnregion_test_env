@@ -27,9 +27,9 @@ st.title("Koralmbahnregion-Dashboard Überblick")
 ## SIDEBAR
 with st.sidebar:
 
-    st.image("gfx/stat_ktn_logo.png", width=190)
+    #st.image("gfx/stat_ktn_logo.png", width=190)
     st.text('')
-    st.image("gfx/stat_stmk_logo.png", width=150)
+    #st.image("gfx/stat_stmk_logo.png", width=150)
     st.text('')
 
     with st.expander(f''':orange[**Info**]''', expanded=False):
@@ -62,7 +62,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     #st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
 
-    st.image("gfx/koralmregion.png", width=600)
+    st.image("gfx/koralmbahnregion.png", width=600)
 
     #streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
     #with open("map.html", "r", encoding="utf-8") as html_file:
