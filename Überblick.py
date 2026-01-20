@@ -1,8 +1,7 @@
 ### ÜBERBLICK SEITE des Koralmbahn-Dashboards
 from misc.gkzList import *
 from data import *
-from map import createMap
-from streamlit_bokeh import streamlit_bokeh
+from deckmap import createDeck
 
 # PAGE CONSTANTS
 START_JAHR: int = 2002
@@ -62,7 +61,31 @@ col1, col2= st.columns([0.8, 0.2])
 # MAP
 with col1:
     #st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
-    streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
+    st.pydeck_chart(createDeck(), width='stretch')
+    st.markdown(
+        """
+        <style>
+        /* Disable ALL mouse interaction with the pydeck canvas */
+        .deckgl-canvas {
+            pointer-events: none !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <style>
+        .mapboxgl-ctrl-zoom,
+        .mapboxgl-ctrl-group {
+            display: none !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    #streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
     #with open("map.html", "r", encoding="utf-8") as html_file:
     #                html_content = html_file.read()
     #st.components.v1.html(html_content, width=1572//2, height=966//2, scrolling=True)
