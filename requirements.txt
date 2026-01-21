@@ -1,5 +1,4 @@
---only-binary=:all:
-
-streamlit>=1.50
-pydeck>=0.9
+streamlit>=1.30
+shapely>=2.0
+pyproj>=3.6
 pandas>=2.2
