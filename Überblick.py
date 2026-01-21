@@ -27,10 +27,11 @@ st.title("Koralmbahnregion-Dashboard Überblick")
 ## SIDEBAR
 with st.sidebar:
 
-    #st.image("gfx/stat_ktn_logo.png", width=190)
+    st.image("gfx/stat_ktn_logo.png", width=190)
     st.text('')
-    #st.image("gfx/stat_stmk_logo.png", width=150)
+    st.image("gfx/stat_stmk_logo.png", width=150)
     st.text('')
+
     with st.expander(f''':orange[**Koralmbahnregion**]''', expanded=False):
         st.write(f'''
                  Die Koralmbahnregion,  
@@ -44,10 +45,11 @@ with st.sidebar:
                  und Bildung für die definierte Koralmbahnregion um die  
                  Entwicklungen darstellen zu können.
                  ''')
+
     with st.expander(f''':orange[**Info**]''', expanded=False):
         st.write(f'''
                  Koralmbahnregion-Dashboard  
-                 aktualisiert am 20.01.2026,  
+                 aktualisiert am 23.10.2025,  
                  erstellt von Martin Writz, BSc.,  
                  Landesstelle für Statistik,   
                  Amt der Kärntner Landesregierung  
@@ -72,20 +74,9 @@ col1, col2, col3 = st.columns([1, 8, 1])
 
 # MAP
 with col2:
-    #st.write("Ein Fehler ist aufgetreten. An der Behebung wird gearbeitet.")
     create_svg_map()
-    #st.image("gfx/koralmbahnregion.png", width=600)
-
-    #streamlit_bokeh(createMap(), use_container_width=True)#, key="plot1"
-    #with open("map.html", "r", encoding="utf-8") as html_file:
-    #                html_content = html_file.read()
-    #st.components.v1.html(html_content, width=1572//2, height=966//2, scrolling=True)
-# OG: st.components.v1.html(html_content, width=1572//2, height=966//2, scrolling=False)
- 
-# ABOUT
-
-
+    
 # pre-load data
-#data_lst = ['bevoelkerung', 'wanderungen', "wohnungen", "erwerbstaetige", "arbeitsstaetten", "tourismus", "schueler", "hoest_ausbildung", "verkehrszaehlung"]
-#for elem in data_lst:
-#    df = get_data(f'{elem}.csv')
+data_lst = ['bevoelkerung', 'wanderungen', "wohnungen", "erwerbstaetige", "arbeitsstaetten", "tourismus", "schueler", "hoest_ausbildung", "verkehrszaehlung"]
+for elem in data_lst:
+    df = get_data(f'{elem}.csv')
